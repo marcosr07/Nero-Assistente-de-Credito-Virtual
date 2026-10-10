@@ -1,4 +1,4 @@
-# 🏦 Nexo — Assistente Bancário Inteligente
+# 🏦 Nexo — Assistente de Crédito Bancário Inteligente
 
 > Agente de Inteligência Artificial Generativa aplicado ao atendimento bancário, à análise inicial de elegibilidade ao crédito e à consulta contextual de informações financeiras.
 
