@@ -62,7 +62,7 @@ O Nexo foi planejado com uma arquitetura modular, separando a interface, o model
 ```mermaid
 flowchart TD
     A[Cliente / Usuário] --> B[Interface Streamlit]
-    B --> C[Orquestrador Python]
+    B --> C[Orquestrador]
     C --> D[Identificação e contexto]
     D --> E[Consulta às bases CSV]
     E --> F[Validação dos dados]
@@ -79,7 +79,7 @@ flowchart TD
 
 1. **Entrada:** o usuário faz uma pergunta sobre crédito, produtos financeiros ou informações da conta.
 2. **Identificação:** o sistema identifica o cliente no ambiente autorizado.
-3. **Consulta:** o Python acessa somente as bases necessárias para responder.
+3. **Consulta:** O acesso somente as bases necessárias para responder.
 4. **Validação:** o sistema verifica a consistência e a disponibilidade dos dados.
 5. **Motor de regras:** critérios objetivos são avaliados conforme os parâmetros cadastrados.
 6. **Geração de resposta:** o modelo de linguagem transforma os resultados em uma explicação clara e contextualizada.
@@ -93,12 +93,10 @@ O modelo de linguagem é responsável pela comunicação e interpretação conte
 
 | Tecnologia | Aplicação no projeto |
 |---|---|
-| Python | Lógica da aplicação e integração dos componentes |
-| Pandas | Leitura, filtragem e cruzamento das bases CSV |
 | Streamlit | Interface conversacional e visualização dos resultados |
 | CSV | Armazenamento demonstrativo dos dados |
-| Ollama ou API de LLM | Geração de respostas com modelos de linguagem |
-| Git e GitHub | Versionamento, documentação e portfólio |
+| Ollama | Geração de respostas com modelos de linguagem |
+| GitHub | Versionamento, documentação e portfólio |
 | Mermaid | Representação visual da arquitetura |
 
 A arquitetura permite começar com uma execução local e evoluir para APIs, bancos de dados e integrações autorizadas.
@@ -209,8 +207,6 @@ A documentação completa dos prompts e dos exemplos de interação está em [`d
 
 ### 1. Pré-requisitos
 
-- Python 3.11 ou compatível com as dependências escolhidas.
-- Git.
 - Bases CSV do projeto.
 - Um modelo de linguagem local via Ollama ou uma API de modelo compatível.
 
@@ -228,14 +224,12 @@ Substitua `SEU-USUARIO` pelo nome da sua conta no GitHub.
 No Windows:
 
 ```bash
-python -m venv .venv
 .venv\Scripts\activate
 ```
 
 No Linux ou macOS:
 
 ```bash
-python3 -m venv .venv
 source .venv/bin/activate
 ```
 
@@ -251,7 +245,6 @@ As dependências iniciais podem incluir:
 streamlit
 pandas
 requests
-python-dotenv
 ```
 
 ### 5. Configurar o modelo de linguagem
@@ -378,7 +371,7 @@ O uso de um modelo local pode reduzir a transmissão de dados a provedores exter
 - **Arquitetura modular:** separa interface, dados, regras e modelo de linguagem.
 - **Rastreabilidade:** permite evoluir para registrar fontes, versões das políticas e critérios aplicados.
 - **Flexibilidade tecnológica:** permite avaliar modelos locais ou APIs, conforme a implementação.
-- **Aplicação prática de dados:** demonstra o uso de Python, Pandas, regras de negócio e IA Generativa em um cenário financeiro.
+- **Aplicação prática de dados:** demonstra o uso de regras de negócio e IA Generativa em um cenário financeiro.
 
 ---
 
