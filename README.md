@@ -36,6 +36,10 @@ Diferentemente de um chatbot convencional, o Nexo considera o contexto do client
 
 ---
 
+## Documentação Completa
+
+Toda a documentação técnica, estratégias de prompt e casos de teste estão disponíveis na pasta [`docs/`](./docs/).
+
 ## 🎯 Objetivo do projeto
 
 Desenvolver um agente inteligente capaz de integrar dados financeiros, regras de negócio e modelos de linguagem para melhorar a experiência de atendimento e apoiar análises preliminares de crédito.
