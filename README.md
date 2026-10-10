@@ -108,7 +108,7 @@ A arquitetura permite começar com uma execução local e evoluir para APIs, ban
 ```text
 nexo-assistente-bancario/
 │
-├── data/
+├── datas/
 │   ├── 01_parametros_cliente.csv
 │   ├── 02_historico_movimentacoes.csv
 │   ├── 03_perfil_cliente.csv
