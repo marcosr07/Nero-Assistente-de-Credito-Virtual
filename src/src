@@ -20,16 +20,7 @@ Antes de iniciar, verifique se você possui:
 
 ## 2. Clonar o repositório
 
-Caso o projeto já esteja publicado no GitHub:
-
-```bash
-git clone https://github.com/SEU-USUARIO/nexo-assistente-bancario.git
-cd nexo-assistente-bancario
-```
-
-Substitua `SEU-USUARIO` pelo nome da sua conta no GitHub.
-
-Se ainda estiver desenvolvendo localmente, entre diretamente na pasta do projeto.
+https://github.com/marcosr07/Nero-Assistente-de-Credito-Virtual/blob/main/README.md
 
 ## 3. Criar o ambiente virtual
 
@@ -89,7 +80,7 @@ Para sair da conversa, utilize o comando `/bye`.
 Certifique-se de que a pasta `data/` contenha os seguintes arquivos:
 
 ```text
-data/
+datas/
 ├── 01_parametros_cliente.csv
 ├── 02_historico_movimentacoes.csv
 ├── 03_perfil_cliente.csv
@@ -228,35 +219,8 @@ Após abrir a interface, execute os testes abaixo utilizando os clientes fictíc
 
 **Resultado esperado:** o Nexo consulta as movimentações disponíveis, calcula os valores com critérios consistentes e informa o período analisado.
 
-Registre os resultados em `docs/04-metricas.md`. Não considere um teste aprovado até verificar a resposta produzida pela aplicação.
 
-## 11. Evidência de execução
-
-Após validar o funcionamento, registre uma captura de tela da interface e, se possível, uma consulta demonstrando o uso real das bases.
-
-Sugestão de organização:
-
-```text
-docs/
-└── evidencias/
-    ├── 01-interface.png
-    ├── 02-consulta-produto.png
-    └── 03-analise-elegibilidade.png
-```
-
-As capturas devem demonstrar somente dados fictícios ou devidamente anonimizados.
-
-Insira uma evidência no README com o caminho correspondente:
-
-```markdown
-## 🖥️ Evidência de execução
-
-![Interface do Nexo](./docs/evidencias/01-interface.png)
-```
-
-Não utilize uma imagem ilustrativa como comprovação de uma funcionalidade que ainda não foi implementada.
-
-## 12. Alternativa: utilizar uma API de modelo de linguagem
+## 11. Alternativa: utilizar uma API de modelo de linguagem
 
 O Nexo também pode ser adaptado para utilizar uma API externa.
 
@@ -269,23 +233,6 @@ Nesse caso:
 5. Valide as regras de privacidade e segurança antes de utilizar dados reais.
 
 A utilização de uma API externa pode exigir conexão com a internet e gerar custos conforme o provedor e o consumo.
-
-## 13. Checklist final
-
-- [ ] Ambiente virtual criado e ativado.
-- [ ] Dependências instaladas.
-- [ ] Modelo de linguagem configurado.
-- [ ] Cinco bases CSV disponíveis.
-- [ ] Carregamento e validação dos dados implementados.
-- [ ] Motor de regras de crédito implementado.
-- [ ] Integração com o modelo configurada.
-- [ ] Interface Streamlit executando.
-- [ ] Quatro cenários principais de teste executados.
-- [ ] Resultados documentados em `docs/04-metricas.md`.
-- [ ] Evidências de execução registradas.
-- [ ] Nenhuma credencial ou informação bancária real publicada.
-
----
 
 ## Considerações finais
 
