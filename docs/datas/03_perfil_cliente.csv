@@ -1,0 +1,6 @@
+﻿cliente_id,segmento,perfil_financeiro,objetivo_principal,necessidade_credito,interesse_investimentos,horizonte_financeiro,tolerancia_risco_investimentos,fonte_perfil,data_atualizacao,observacao
+CLIENTE_001,PF_varejo,tomador_potencial,organizar_despesas,cartao_e_limite,nao_informado,nao_informado,nao_avaliado,inferido_de_interacao_ficticia,2026-10-10,Perfil provisório; confirmar intenção antes de recomendar produto.
+CLIENTE_002,PF_varejo,tomador_potencial,acesso_a_meios_de_pagamento,cartao,nao_informado,nao_informado,nao_avaliado,inferido_de_interacao_ficticia,2026-10-10,Renda baseada em movimentação não equivale a renda comprovada.
+CLIENTE_003,PF_personalizado,tomador_e_poupador,financiar_bem,financiamento_veiculo,interesse_declarado,medio_prazo,nao_avaliado,declaracao_ficticia,2026-10-10,Não recomendar investimento específico sem perfil adequado e informações suficientes.
+CLIENTE_004,PJ_empresas,tomador_pj,capital_de_giro,capital_giro_e_limite_conta,nao_aplicavel,curto_prazo,nao_aplicavel,dados_empresariais_ficticios,2026-10-10,"Análise PJ exige faturamento, fluxo de caixa, endividamento e demonstrações contábeis."
+CLIENTE_005,PF_varejo,indefinido,nao_informado,nao_definida,nao_informado,nao_informado,nao_avaliado,dados_insuficientes,2026-10-10,Não inferir tomador ou investidor com base apenas no score.

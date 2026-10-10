@@ -1,1 +1,6 @@
-
+﻿cliente_id,tipo_pessoa,score,tempo_relacionamento_meses,cadastro_completo,renda_status,renda_liquida_mensal,comprometimento_renda_percentual,restricao_impeditiva,garantias_disponiveis,produtos_disponiveis,data_atualizacao,origem_dados,status_validacao
+CLIENTE_001,PF,700,6,True,comprovada,5000.0,25.0,False,nenhuma,cartao_credito;cheque_especial;emprestimo_pessoal;financiamento_veiculo,2026-10-10,sistema_cadastral,validado
+CLIENTE_002,PF,580,4,True,movimentacao,3200.0,15.0,False,nenhuma,cartao_credito;cheque_especial,2026-10-10,sistema_cadastral,validado
+CLIENTE_003,PF,780,14,True,comprovada,8500.0,18.0,False,veiculo,cartao_credito;cheque_especial;emprestimo_pessoal;financiamento_veiculo;emprestimo_com_garantia,2026-10-10,sistema_cadastral,validado
+CLIENTE_004,PJ,690,18,True,faturamento_comprovado,45000.0,32.0,False,recebiveis,cartao_empresarial;limite_conta_pj;capital_giro,2026-10-10,sistema_cadastral,validado
+CLIENTE_005,PF,640,2,False,nao_validada,,,True,nenhuma,cartao_credito;cheque_especial;emprestimo_pessoal,2026-10-10,sistema_cadastral,pendente

@@ -1,0 +1,11 @@
+﻿movimentacao_id,cliente_id,data,tipo_movimentacao,descricao,valor_brl,saldo_apos_movimentacao_brl,canal,recorrente,categoria,observacao
+MOV001,CLIENTE_001,2026-10-05,credito,Salário,5000.0,6200.0,transferencia,True,renda,Exemplo fictício; recorrência a confirmar no histórico completo.
+MOV002,CLIENTE_001,2026-10-06,debito,Aluguel,-1500.0,4700.0,debito_automatico,True,moradia,Valor ilustrativo.
+MOV003,CLIENTE_001,2026-10-07,debito,Pagamento de cartão,-850.0,3850.0,app,True,credito,Valor ilustrativo.
+MOV004,CLIENTE_002,2026-10-04,credito,Transferência recebida,1200.0,1800.0,pix,False,transferencia,Origem não classificada como renda comprovada.
+MOV005,CLIENTE_002,2026-10-06,debito,Contas de consumo,-420.0,1380.0,app,True,contas,Valor ilustrativo.
+MOV006,CLIENTE_003,2026-10-01,credito,Salário,8500.0,9200.0,transferencia,True,renda,Valor ilustrativo.
+MOV007,CLIENTE_003,2026-10-03,debito,Prestação de veículo,-1250.0,7950.0,debito_automatico,True,financiamento,Obrigação financeira ilustrativa.
+MOV008,CLIENTE_004,2026-10-02,credito,Recebimento de vendas,18000.0,22500.0,transferencia,True,faturamento,Movimentação PJ fictícia; não substitui demonstrações contábeis.
+MOV009,CLIENTE_004,2026-10-05,debito,Pagamento a fornecedor,-9500.0,13000.0,transferencia,True,fornecedor,Valor ilustrativo.
+MOV010,CLIENTE_005,2026-10-08,credito,Depósito identificado,900.0,950.0,deposito,False,deposito,Cadastro e renda pendentes de validação.
