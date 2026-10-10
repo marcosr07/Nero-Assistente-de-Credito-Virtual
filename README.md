@@ -127,15 +127,6 @@ nexo-assistente-bancario/
 │   ├── data_loader.py
 │   ├── credit_rules.py
 │   └── agent.py
-│
-├── tests/
-│   ├── test_credit_rules.py
-│   └── test_data_validation.py
-│
-├── .gitignore
-├── requirements.txt
-├── .env.example
-└── README.md
 ```
 
 ### Descrição dos principais arquivos
