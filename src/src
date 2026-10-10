@@ -1,33 +1,296 @@
-# Passo a Passo de Execução
+# 🚀 Passo a Passo de Execução — Nexo
 
-## Setup do Ollama
+Este documento apresenta as etapas para configurar o ambiente, organizar as bases de conhecimento e executar o protótipo do Nexo — Assistente Bancário Inteligente.
+
+O projeto utiliza Python para consultar dados estruturados, aplicar regras de negócio e integrar um modelo de linguagem para gerar respostas contextualizadas.
+
+> **Status:** este guia descreve a execução prevista para a arquitetura do projeto. Os comandos de inicialização dependem da implementação dos módulos e da configuração das bases de dados.
+
+---
+
+## 1. Pré-requisitos
+
+Antes de iniciar, verifique se você possui:
+
+- Python instalado.
+- Git instalado.
+- Ollama, caso opte por executar um modelo local.
+- As cinco bases CSV do projeto.
+- Os arquivos de código e dependências organizados na estrutura do repositório.
+
+## 2. Clonar o repositório
+
+Caso o projeto já esteja publicado no GitHub:
 
 ```bash
-# 1. Instalar Ollama (ollama.com)
-# 2. Baixar um modelo leve
-ollama pull gpt-oss
-
-# 3. Testar se funciona
-ollama run gpt-oss "Olá!"
+git clone https://github.com/SEU-USUARIO/nexo-assistente-bancario.git
+cd nexo-assistente-bancario
 ```
 
-## Código Completo
+Substitua `SEU-USUARIO` pelo nome da sua conta no GitHub.
 
-Todo o código-fonte está no arquivo `app.py`.
+Se ainda estiver desenvolvendo localmente, entre diretamente na pasta do projeto.
 
-## Como Rodar
+## 3. Criar o ambiente virtual
+
+No Windows, execute:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Se estiver utilizando o Prompt de Comando (CMD):
+
+```bat
+.venv\Scripts\activate.bat
+```
+
+O ambiente virtual isola as dependências utilizadas pelo projeto.
+
+## 4. Configurar o Ollama
+
+O Ollama permite executar modelos de linguagem localmente, sem depender necessariamente de uma API externa.
+
+### 4.1 Instalar o Ollama
+
+Baixe e instale o aplicativo pelo site oficial:
+
+https://ollama.com/
+
+### 4.2 Baixar um modelo
+
+O exemplo abaixo utiliza o modelo `gpt-oss`:
 
 ```bash
-# 1. Instalar dependências
-pip install streamlit pandas requests
+ollama pull gpt-oss
+```
 
-# 2. Garantir que Ollama está rodando
+Antes de escolher o modelo para uso cotidiano, verifique seus requisitos de memória e processamento e se ele atende às necessidades da aplicação.
+
+### 4.3 Testar o modelo
+
+```bash
+ollama run gpt-oss
+```
+
+Quando o terminal abrir a conversa, digite:
+
+```text
+Olá! Você é o Nexo, um assistente bancário inteligente. Apresente-se em uma frase.
+```
+
+Para sair da conversa, utilize o comando `/bye`.
+
+> O teste confirma que o modelo consegue responder localmente. Ele não confirma, por si só, que o Nexo esteja consultando os CSVs ou aplicando corretamente as regras de crédito.
+
+## 5. Organizar as bases de conhecimento
+
+Certifique-se de que a pasta `data/` contenha os seguintes arquivos:
+
+```text
+data/
+├── 01_parametros_cliente.csv
+├── 02_historico_movimentacoes.csv
+├── 03_perfil_cliente.csv
+├── 04_historico_atendimento.csv
+└── 05_catalogo_produtos_financeiros.csv
+```
+
+As bases utilizam o identificador `client_id` para relacionar informações do mesmo cliente.
+
+Antes da execução, confira se:
+
+- Os arquivos existem nos caminhos esperados.
+- As colunas necessárias estão presentes.
+- Os identificadores dos clientes estão consistentes.
+- Os dados de demonstração são fictícios.
+- Os critérios do catálogo estão identificados como parâmetros de referência, e não como políticas bancárias oficiais.
+
+## 6. Instalar as dependências
+
+Crie o arquivo `requirements.txt` com as dependências utilizadas pela implementação.
+
+Exemplo inicial:
+
+```text
+streamlit
+pandas
+requests
+python-dotenv
+```
+
+Instale os pacotes:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+As dependências devem ser atualizadas conforme os módulos efetivamente implementados.
+
+## 7. Configurar a aplicação
+
+A estrutura planejada separa as responsabilidades em módulos:
+
+```text
+src/
+├── app.py
+├── data_loader.py
+├── credit_rules.py
+└── agent.py
+```
+
+- `app.py`: interface do usuário construída com Streamlit.
+- `data_loader.py`: carregamento, validação e consulta das bases CSV.
+- `credit_rules.py`: aplicação dos critérios objetivos de elegibilidade.
+- `agent.py`: montagem do contexto, integração com o modelo e geração das respostas.
+
+A pasta `docs/` reúne os prompts, a documentação das bases e os critérios de avaliação.
+
+O modelo de linguagem deve receber apenas as informações necessárias para responder à solicitação. A avaliação de critérios objetivos deve ser feita pelo motor de regras, e não exclusivamente pelo modelo.
+
+## 8. Iniciar o serviço Ollama
+
+Se o Ollama não estiver em execução, inicie o serviço:
+
+```bash
 ollama serve
+```
 
-# 3. Rodar o app
+Se o aplicativo já tiver iniciado o serviço automaticamente, não é necessário executar esse comando novamente.
+
+Por padrão, a API local do Ollama costuma estar disponível em:
+
+```text
+http://localhost:11434
+```
+
+O módulo `agent.py` deve estar configurado para acessar o modelo instalado e tratar eventuais erros de conexão.
+
+## 9. Executar o Nexo
+
+Com o ambiente virtual ativado e as dependências instaladas, execute:
+
+```bash
+streamlit run src/app.py
+```
+
+No Windows, o comando também pode ser escrito assim:
+
+```powershell
 streamlit run .\src\app.py
 ```
 
-## Evidência de Execução
+O Streamlit exibirá no terminal o endereço local para abrir a interface no navegador.
 
-<img width="1920" height="1107" alt="image" src="https://github.com/user-attachments/assets/60feed79-38a6-43dc-b23a-9dd007e34c1d" />
+Se ocorrer um erro, verifique:
+
+- Se o arquivo `src/app.py` existe.
+- Se as dependências foram instaladas no ambiente correto.
+- Se os caminhos das bases CSV estão corretos.
+- Se o modelo escolhido está instalado no Ollama.
+- Se o serviço está acessível.
+- Se o nome do modelo configurado no código corresponde ao modelo instalado.
+
+## 10. Validar o funcionamento
+
+Após abrir a interface, execute os testes abaixo utilizando os clientes fictícios das bases.
+
+### Teste A — Consulta de produto
+
+**Pergunta:**
+
+> Quais são os critérios iniciais para solicitar um cartão de crédito?
+
+**Resultado esperado:** o Nexo consulta o catálogo e apresenta os critérios cadastrados, informando que elegibilidade inicial não significa aprovação.
+
+### Teste B — Elegibilidade de crédito
+
+**Pergunta:**
+
+> Com meu perfil, posso solicitar um empréstimo pessoal?
+
+**Resultado esperado:** o Nexo consulta os dados relevantes do cliente e os requisitos específicos do empréstimo, identifica as pendências e não confirma uma aprovação sem respaldo.
+
+### Teste C — Informação indisponível
+
+**Pergunta:**
+
+> Qual será a taxa de juros da minha proposta?
+
+**Resultado esperado:** se a taxa não estiver disponível em uma fonte autorizada, o Nexo informa que precisa consultar uma proposta ou simulação oficial.
+
+### Teste D — Histórico financeiro
+
+**Pergunta:**
+
+> Quais foram minhas principais despesas no período registrado?
+
+**Resultado esperado:** o Nexo consulta as movimentações disponíveis, calcula os valores com critérios consistentes e informa o período analisado.
+
+Registre os resultados em `docs/04-metricas.md`. Não considere um teste aprovado até verificar a resposta produzida pela aplicação.
+
+## 11. Evidência de execução
+
+Após validar o funcionamento, registre uma captura de tela da interface e, se possível, uma consulta demonstrando o uso real das bases.
+
+Sugestão de organização:
+
+```text
+docs/
+└── evidencias/
+    ├── 01-interface.png
+    ├── 02-consulta-produto.png
+    └── 03-analise-elegibilidade.png
+```
+
+As capturas devem demonstrar somente dados fictícios ou devidamente anonimizados.
+
+Insira uma evidência no README com o caminho correspondente:
+
+```markdown
+## 🖥️ Evidência de execução
+
+![Interface do Nexo](./docs/evidencias/01-interface.png)
+```
+
+Não utilize uma imagem ilustrativa como comprovação de uma funcionalidade que ainda não foi implementada.
+
+## 12. Alternativa: utilizar uma API de modelo de linguagem
+
+O Nexo também pode ser adaptado para utilizar uma API externa.
+
+Nesse caso:
+
+1. Configure a chave por meio de uma variável de ambiente.
+2. Não publique a chave no GitHub.
+3. Implemente o conector correspondente em `agent.py`.
+4. Defina quais informações podem ser transmitidas ao provedor.
+5. Valide as regras de privacidade e segurança antes de utilizar dados reais.
+
+A utilização de uma API externa pode exigir conexão com a internet e gerar custos conforme o provedor e o consumo.
+
+## 13. Checklist final
+
+- [ ] Ambiente virtual criado e ativado.
+- [ ] Dependências instaladas.
+- [ ] Modelo de linguagem configurado.
+- [ ] Cinco bases CSV disponíveis.
+- [ ] Carregamento e validação dos dados implementados.
+- [ ] Motor de regras de crédito implementado.
+- [ ] Integração com o modelo configurada.
+- [ ] Interface Streamlit executando.
+- [ ] Quatro cenários principais de teste executados.
+- [ ] Resultados documentados em `docs/04-metricas.md`.
+- [ ] Evidências de execução registradas.
+- [ ] Nenhuma credencial ou informação bancária real publicada.
+
+---
+
+## Considerações finais
+
+O Nexo foi planejado para demonstrar como Python, dados estruturados, regras de negócio e IA Generativa podem trabalhar em conjunto no contexto bancário.
+
+O objetivo da execução não é apenas obter uma resposta do modelo, mas validar todo o fluxo: consulta às bases, aplicação dos critérios, tratamento de incertezas e geração de uma resposta fundamentada.
+
+A arquitetura poderá evoluir posteriormente para integração com APIs bancárias autorizadas, banco de dados, autenticação, registros de auditoria e testes automatizados.
